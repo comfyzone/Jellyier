@@ -2,14 +2,60 @@ var selectedMovie;
 
 var genres = [];
 
+var genreTimeout;
+var genreList = document.getElementById("genreList")
+var searchBar = document.getElementById("searchBar")
+
+function sortGenresAlphabetically() {
+    var children = Array.from(genreList.children)
+    children.sort(function (x, y) { return x.textContent.localeCompare(y.textContent) });
+    children.forEach(child => {
+        genreList.appendChild(child)
+    })
+}
+function sortGenresSelected() {
+    var children = Array.from(genreList.children)
+    children.sort(function (x, y) { return y.classList.contains("selectedGenre") - x.classList.contains("selectedGenre") });
+    children.forEach(child => {
+        genreList.appendChild(child)
+    })
+}
+function unselectGenres() {
+    Array.from(genreList.children).forEach(child => {
+        child.classList.remove("selectedGenre")
+    })
+    sortGenresAlphabetically()
+}
+
 fetch("requests/genres").then(async response => {
     response.json().then(data => {
         genres = data.genres
 
-        var genreList = document.getElementById("genreList")
-        genres.forEach(genre => {
+
+        genres.forEach((genre, index) => {
             var genreDiv = document.createElement('div');
             genreDiv.textContent = genre.name
+            /* if (index < 6) genreDiv.classList.add("selectedGenre") */
+            genreDiv.onclick = function () {
+
+                searchBar.value = ""
+                
+                if (genreDiv.classList.contains("selectedGenre")) {
+                    genreDiv.classList.remove("selectedGenre")
+                } else {
+                    genreDiv.classList.add("selectedGenre")
+                }
+                sortGenresAlphabetically()
+                sortGenresSelected()
+
+
+                if (genreTimeout) {
+                    clearTimeout(genreTimeout)
+                }
+                genreTimeout = setTimeout(() => {
+                    console.log("search")
+                }, 2000);
+            }
             genreList.appendChild(genreDiv)
         })
 
@@ -20,6 +66,8 @@ fetch("requests/genres").then(async response => {
 
 function search(term) {
     if (term) {
+
+        unselectGenres()
 
         /* window.history.pushState("", "", '/newpage'); */
         urlParams.set("search", term)
@@ -64,8 +112,7 @@ function search(term) {
 function show(value) {
     if (value) {
         document.getElementById(`detailDim`).style.display = `block`
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${window.scrollY}px`;
+        document.body.style.overflowX = "hidden"
 
         var showdetails = document.getElementById("showdetails")
 
@@ -73,7 +120,7 @@ function show(value) {
             showdetails.removeChild(showdetails.lastChild);
         }
 
-        document.getElementById("results").style.pointerEvents="none"
+        document.getElementById("results").style.pointerEvents = "none"
 
         document.getElementById("genreList").style.display = "none"
 
@@ -88,13 +135,9 @@ function show(value) {
 
     } else {
         selectedMovie = null;
-        document.getElementById("results").style.pointerEvents="revert"
+        document.getElementById("results").style.pointerEvents = "revert"
         document.getElementById(`detailDim`).style.display = `none`
         document.getElementById("genreList").style.display = "block"
-        const scrollY = document.body.style.top;
-        document.body.style.position = '';
-        document.body.style.top = '';
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
     }
 }
 
@@ -123,6 +166,8 @@ form.addEventListener('submit', (event) => {
     console.log(form.elements["search"].value)
 
     search(form.elements["search"].value)
+
+    form.elements["search"].blur()
 
     event.preventDefault();
 });
