@@ -5,11 +5,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet preload" href="requests/style.css">
     <title>Jellier</title>
 </head>
 
 <body>
+    <div class="nav">
+        <div class="search-container">
+            <form id="search">
+                <input type="text" placeholder="Search.." name="search">
+                <button class="vertical-center" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>  
+    </div>
+
+    <div class="dimDetails" id="detailDim">
+    <div class="detailsPanel" id="detailsPanel">
+        <span class="xbutton" onclick="show(false)"></span>
+        <div id="showdetails"></div>
+    </div>
+</div>
+<div class="genreWrapper"><div id="genreList"></div></div>
+
+
+
+    <div class="results" id="results">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <footer class="footer">
+        <span>Design By: <a href="https://twitter.com/pyrosprites">@pyrosprites</a></span> <span>Programming By: <a href="">PixelBlob</a></span>
+    </footer>
 
 </body>
+<script rel="preload" src="requests/app.js"></script>
+<link rel="stylesheet preload"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </html>
+

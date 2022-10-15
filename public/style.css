@@ -1,0 +1,273 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow-x: hidden;
+}
+
+
+body {
+  background: #485563;
+  background: -webkit-linear-gradient(to right, #29323c, #485563);
+  background: linear-gradient(to right, #29323c, #485563);
+  overflow-x: hidden;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+}
+
+.nav {
+  float: center;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.search-container {
+  margin-top: 5px;
+  margin-bottom: 3px;
+  padding: 6px;
+  font-size: 25px;
+  border: none;
+  width: 70%;
+  border-radius: 6px;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type=text] {
+  color: #ffffff;
+  background-color: #232627;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  padding: 6px;
+  font-size: 25px;
+  border: none;
+  width: 80%;
+  border-radius: 6px;
+  text-align: center;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-container button {
+  cursor: pointer;
+  background-color: #3B3B3B;
+  border: none;
+  padding: 6px;
+  border-radius: 5px;
+  display: inline-block;
+  color: white;
+}
+
+.search-container button>i {
+  font-size: 156%;
+}
+
+
+.results {
+  width: 100%;
+  font-size: 0;
+  text-align: center;
+  display: block;
+}
+
+.results>div:hover{
+    transform: scale(1.1);
+}
+
+.results>div {
+    transition: all .2s ease-in-out;
+  background-color: #3b3fb0;
+  width: calc(20vh);
+    height: calc(20vh*1.5);
+  display: inline-block;
+  margin: 5px;
+  border: none;
+
+  font-size: 2rem;
+
+  box-shadow: -2px 3px 24px -5px rgba(15, 15, 15, 0.56);
+  -webkit-box-shadow: -2px 3px 24px -5px rgba(15, 15, 15, 0.56);
+  -moz-box-shadow: -2px 3px 24px -5px rgba(15, 15, 15, 0.56);
+
+  position: relative;
+
+  
+}
+
+.results>div>span {
+  position: absolute;
+  z-index:0;
+  left: 0px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.detailsPanel {
+  position: absolute;
+  background-color: #232627;
+  width: 90%;
+  height: 90%;
+  z-index: 10;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.dimDetails {
+  background-color: #383838ef;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 10;
+  display: none;
+}
+#showdetails > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30vh;
+  margin-top: 5%;
+  margin-bottom: 20px;
+}
+
+#showdetails > span {
+  text-align: center;
+}
+
+.detailsPanel > a {
+  z-index: 11;
+  position: absolute;
+}
+
+#showdetails {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  white-space: initial;
+  text-align: center;
+}
+
+.results>div>img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    z-index:1;
+    position: absolute;
+    left: 0px;
+}
+
+
+@media screen and (max-width: 600px) {
+  .search-container {
+    width: 100%;
+  }
+
+  .genreWrapper {
+    white-space: nowrap;
+    overflow-x: scroll;
+  }
+
+  .results>div {
+    width: calc(1)vh;
+    height: calc(1*1.5)vh;
+  }
+  .detailsPanel {
+    width: 100%;
+  height: 100%;
+  }
+  .detailsPanel {
+    background-color: #232627fa;
+  }
+  .dimDetails {
+    background-color: #23262700;
+  }
+  .detailsPanel > img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    margin-top: 20%;
+  }
+}
+
+.xbutton:after{
+  display: inline-block;
+  content: "\00d7"; /* This will render the 'X' */
+  position: absolute;
+  top:0px;
+  right: 0px;
+  font-size: 5rem;
+  margin-right: 20px;
+}
+.xbutton:hover{
+  color: rgb(223, 219, 6);
+}
+
+#genreList > div {
+  font-family: system-ui;
+
+  display: inline-block;
+  padding: 7px;
+  margin: 3px;
+  background-color: #232627;
+  border-radius: 4px;
+  color: white;
+}
+
+.genreWrapper {
+  text-align: center;
+}
+
+#genreList {
+  background-color: transparent;
+  display: inline-block;
+}
+
+.exactCenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.footer {
+  font-weight: apple-ui;
+
+  position: sticky;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  background-color: #272727;
+  color: white;
+  text-align: center;
+  z-index: 5;
+  padding: 5px;
+}
+
+.footer > span > a {
+  color: #1a5483;
+  text-decoration: none;
+}
+
+.footer > span:not(:first-child) {
+  margin-left: 15px;
+}
+
