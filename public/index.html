@@ -11,21 +11,36 @@
 
 <body>
     <div class="nav">
+        
+
         <div class="search-container">
             <form id="search">
                 <input type="text" placeholder="Search.." name="search" id="searchBar">
                 <button class="vertical-center" type="submit"><i class="fa fa-search"></i></button>
             </form>
-        </div>  
+        </div>
     </div>
 
     <div class="dimDetails" id="detailDim">
-    <div class="detailsPanel" id="detailsPanel">
-        <span class="xbutton" onclick="show(false)"></span>
-        <div id="showdetails"></div>
+        <div class="detailsPanel" id="detailsPanel">
+            <span class="xbutton" onclick="show(false)"></span>
+            <div class="posterStuff">
+                <img id="posterImage">
+                <div class="titleDiv">
+                    <h2 class="mTitle" id="title">me</h2>
+                </div>
+                <div class="ratings" id="rating"></div>
+
+            </div>
+            <div class="showButtons"><button id="request"><i class="fa fa-asterisk" aria-hidden="true"></i>
+                    Request</button><button id="watch"><i class="fa fa-eye" aria-hidden="true"></i> Watch</button></div>
+
+            <div id="showdetails"></div>
+        </div>
     </div>
-</div>
-<div class="genreWrapper"><div id="genreList"></div></div>
+    <div class="genreWrapper">
+        <div id="genreList"></div>
+    </div>
 
 
 
@@ -38,8 +53,9 @@
         <div></div>
     </div>
 
-    <footer class="footer">
-        <span>Design By: <a href="https://twitter.com/pyrosprites">@pyrosprites</a></span> <span>Programming By: <a href="">PixelBlob</a></span>
+    <footer class="footer" id="footer">
+        <span>Design: <a href="https://twitter.com/pyrosprites">@pyrosprites</a></span> <span>Programming: <a
+                href="">PixelBlob</a></span>
     </footer>
 
 </body>
@@ -48,4 +64,3 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </html>
-
